@@ -1,0 +1,23 @@
+en
+config t
+hostname Sw3
+no ip domain-lookup
+line con 0
+password cisco
+login
+exit
+banner motd #9A - ACCESO NO AUTORIZADO -#
+ip domain-name cisco.com
+crypto key generate rsa 
+1024
+ip ssh version 2
+line vty 0 4
+password cisco
+login
+transport input ssh
+login local
+username admin privilege 15 secret cisco
+enable secret cisco
+service password-encryption
+exit
+wr
